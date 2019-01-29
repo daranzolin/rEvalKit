@@ -164,7 +164,9 @@ ek_project_courses <- function(projectId) {
                           domain = ek_domain(),
                           projectId = projectId,
                           page = 1:100)
-  ek_paginate(BASE_URLs)
+  courses <- ek_paginate(BASE_URLs)
+  courses$projectId = projectId
+  dplyr::select(courses, projectId, everything())
 }
 
 #' Get project users
