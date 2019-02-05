@@ -37,3 +37,29 @@ ek_set_domin("YOUR_DOMAIN_HERE")
 * `ek_terms`
 * `ek_users`
 
+## Project Raw Data
+
+`ek_project_rawdata` will throw a 422 status error if the specified project is not a "General Survey Project". A workaround is to collect the raw data from each course like so:
+
+```
+projects <- ek_projects()
+safe_get_courses <- safely(ek_project_courses)
+project_courses <- projects$id %>% 
+  map(safe_get_courses) %>% 
+  map_df("result") 
+
+safe_get_ek_data <- safely(ek_course_rawdata)
+get_project_data_safe_list <- function(projectId) {
+  courses <- try(ek_project_courses(projectId), silent = TRUE)
+  if (inherits(courses, "try-error")) return(NULL)
+  list_args <- list(
+    projectId = projectId,
+    courseId = courses$id
+  )
+  pmap(list_args, safe_get_ek_data)
+}
+all_raw_data <- projects$id %>% 
+  map(get_project_data_safe_list) %>%
+  map_df("result")
+```
+
