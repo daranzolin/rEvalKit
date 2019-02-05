@@ -43,10 +43,6 @@ ek_set_domin("YOUR_DOMAIN_HERE")
 
 ```
 projects <- ek_projects()
-safe_get_courses <- safely(ek_project_courses)
-project_courses <- projects$id %>% 
-  map(safe_get_courses) %>% 
-  map_df("result") 
 
 safe_get_ek_data <- safely(ek_course_rawdata)
 get_project_data_safe_list <- function(projectId) {
