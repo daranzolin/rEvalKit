@@ -181,10 +181,11 @@ ek_project_courses <- function(projectId) {
 #'\dontrun{
 #' ek_project_users(98423, userType = 3)
 #'}
-ek_project_users <- function(projectId, userType = 4) {
-  BASE_URLs <- glue::glue("{domain}/projects/{projectId}/users?userType={userType}&page={page}",
+ek_project_users <- function(projectId, courseId, userType = 4) {
+  BASE_URLs <- glue::glue("{domain}/projects/{projectId}/courses/{courseId}/users?userType={userType}&page={page}",
                           domain = ek_domain(),
                           projectId = projectId,
+                          courseId = courseId,
                           userType = userType,
                           page = 1:100)
   ek_paginate(BASE_URLs)
