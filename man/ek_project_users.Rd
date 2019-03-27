@@ -4,7 +4,7 @@
 \alias{ek_project_users}
 \title{Get project users}
 \usage{
-ek_project_users(projectId, userType = 4)
+ek_project_users(projectId, courseId, userType = 4)
 }
 \arguments{
 \item{projectId}{a valid project id}
