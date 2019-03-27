@@ -9,7 +9,7 @@ ek_project_users(projectId, courseId)
 \arguments{
 \item{projectId}{a valid project id}
 
-\item{userType}{integer, 3 = instructor, 4 = respondent, 6 = TA}
+\item{courseId}{a valid course id}
 }
 \value{
 a data frame

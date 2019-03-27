@@ -172,7 +172,7 @@ ek_project_courses <- function(projectId) {
 #' Get project users
 #'
 #' @param projectId a valid project id
-#' @param userType integer, 3 = instructor, 4 = respondent, 6 = TA
+#' @param courseId a valid course id
 #'
 #' @return a data frame
 #' @export
@@ -188,7 +188,10 @@ ek_project_users <- function(projectId, courseId) {
                           courseId = courseId,
                           userType = userType,
                           page = 1:100)
-  ek_paginate(BASE_URLs)
+  project_users <- ek_paginate(BASE_URLs)
+  project_users$projectId <- projectId
+  project_users$courseId <- courseId
+  project_users
 }
 
 #' Get project respondents
