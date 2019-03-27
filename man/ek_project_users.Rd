@@ -4,7 +4,7 @@
 \alias{ek_project_users}
 \title{Get project users}
 \usage{
-ek_project_users(projectId, courseId, userType = 4)
+ek_project_users(projectId, courseId)
 }
 \arguments{
 \item{projectId}{a valid project id}
@@ -19,6 +19,6 @@ Get project users
 }
 \examples{
 \dontrun{
-ek_project_users(98423, userType = 3)
+ek_project_users(98423, courseId = 43423)
 }
 }

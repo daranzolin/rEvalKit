@@ -179,10 +179,10 @@ ek_project_courses <- function(projectId) {
 #'
 #' @examples
 #'\dontrun{
-#' ek_project_users(98423, userType = 3)
+#' ek_project_users(98423, courseId = 43423)
 #'}
-ek_project_users <- function(projectId, courseId, userType = 4) {
-  BASE_URLs <- glue::glue("{domain}/projects/{projectId}/courses/{courseId}/users?userType={userType}&page={page}",
+ek_project_users <- function(projectId, courseId) {
+  BASE_URLs <- glue::glue("{domain}/projects/{projectId}/courses/{courseId}/users?page={page}",
                           domain = ek_domain(),
                           projectId = projectId,
                           courseId = courseId,
